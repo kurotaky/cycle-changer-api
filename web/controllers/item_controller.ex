@@ -19,8 +19,7 @@ defmodule CycleChanger.ItemController do
     case Repo.insert(changeset) do
       {:ok, _item} ->
         conn
-        |> put_flash(:info, "Item created successfully.")
-        |> redirect(to: item_path(conn, :index))
+        |> send_resp(201, "")
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
