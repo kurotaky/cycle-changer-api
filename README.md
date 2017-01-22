@@ -1,5 +1,6 @@
 # CycleChanger
 サイクルチェンジャー用のAPI
+https://desolate-ridge-29818.herokuapp.com
 
 ## APIの使い方
 ### itemを送信
@@ -7,18 +8,21 @@
  * 0: 棚に入れる時
  * 1: ゴミ箱入れる時
 
+POST https://desolate-ridge-29818.herokuapp.com/api/items
 ```
 curl -v -H "Accept: application/json" \
         -H "Content-type: application/json" \
         -X POST -d '{"item": {"barcode_number": "49123456789123", "status": 0 }}' \
-        http://<endpoint_url>/api/items
+        https://desolate-ridge-29818.herokuapp.com/api/items
 ```
 
 ### itemの一覧を取得
+GET https://desolate-ridge-29818.herokuapp.com/api/items
+
 ```
 curl -v -H "Accept: application/json" \
         -H "Content-type: application/json" \
-        http://<endpoint_url>/api/items
+        https://desolate-ridge-29818.herokuapp.com/api/items
 ```
 
 ## Development
