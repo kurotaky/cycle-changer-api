@@ -1,0 +1,23 @@
+<h2>Show item</h2>
+
+<ul>
+
+  <li>
+    <strong>Barcode number:</strong>
+    <%= @item.barcode_number %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @item.name %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @item.status %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: item_path(@conn, :edit, @item) %>
+<%= link "Back", to: item_path(@conn, :index) %>
