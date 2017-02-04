@@ -61,4 +61,9 @@ defmodule CycleChanger.ItemController do
     |> put_flash(:info, "Item deleted successfully.")
     |> redirect(to: item_path(conn, :index))
   end
+
+  def level(conn, _params) do
+    items = Repo.all(Item)
+    render(conn, :index, items: items)
+  end
 end
