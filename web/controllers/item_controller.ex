@@ -71,6 +71,7 @@ defmodule CycleChanger.ItemController do
       where: i.status == 1,
       select: count("*"))
     level = stock_items_count -- drop_items_count
+    # TODO: 本当は {"level":26} とかで返したい..
     render(conn, :level, level: level)
   end
 end
