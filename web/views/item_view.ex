@@ -13,4 +13,14 @@ defmodule CycleChanger.ItemView do
        status: item.status
      }
    end
+
+   def render("level.json", %{item: level}) do
+     %{
+       level: level
+     }
+   end
+
+   def render("level.json", %{level: level}) do
+     %{data: render_one(level, CycleChanger.ItemView, "level.json")}
+   end
 end

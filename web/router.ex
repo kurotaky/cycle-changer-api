@@ -25,8 +25,8 @@ defmodule CycleChanger.Router do
   # Other scopes may use custom stacks.
   scope "/api", CycleChanger do
     pipe_through :api
-    resources "/items", ItemController
 
     get "/items/level", ItemController, :level
+    resources "/items", ItemController
   end
 end

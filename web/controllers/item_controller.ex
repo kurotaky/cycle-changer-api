@@ -63,7 +63,13 @@ defmodule CycleChanger.ItemController do
   end
 
   def level(conn, _params) do
-    items = Repo.all(Item)
-    render(conn, :index, items: items)
+    stock_items_count = Repo.all(from i in "items",
+      where: i.status == 0,
+      select: count("*"))
+    drop_items_count = Repo.all(from i in "items",
+      where: i.status == 1,
+      select: count("*"))
+    level = stock_items_count -- drop_items_count
+    render(conn, :level, level: level)
   end
 end
