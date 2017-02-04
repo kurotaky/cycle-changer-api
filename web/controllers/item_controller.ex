@@ -1,4 +1,5 @@
 defmodule CycleChanger.ItemController do
+  require IEx
   use CycleChanger.Web, :controller
 
   alias CycleChanger.Item
