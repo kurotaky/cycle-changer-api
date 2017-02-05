@@ -1,5 +1,6 @@
 defmodule CycleChanger.ItemController do
   require IEx
+  require Logger
   use CycleChanger.Web, :controller
 
   alias CycleChanger.Item
@@ -64,14 +65,13 @@ defmodule CycleChanger.ItemController do
   end
 
   def level(conn, _params) do
-    stock_items_count = Repo.all(from i in "items",
+    stock_items_count = hd(Repo.all(from i in "items",
       where: i.status == 0,
-      select: count("*"))
-    drop_items_count = Repo.all(from i in "items",
+      select: count("*")))
+    drop_items_count = hd(Repo.all(from i in "items",
       where: i.status == 1,
-      select: count("*"))
-    level = stock_items_count -- drop_items_count
-    # TODO: 本当は {"level":26} とかで返したい..
+      select: count("*")))
+    level = stock_items_count - drop_items_count
     render(conn, :level, level: level)
   end
 end
