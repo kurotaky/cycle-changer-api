@@ -1,14 +1,26 @@
 # CycleChanger
-サイクルチェンジャー用のAPI
+サイクルチェンジャー用のWeb API
 https://desolate-ridge-29818.herokuapp.com
+
+## 概要
+サイクルチェッカーからバーコードデータを受け取り保存をおこなう。
+ストック量に応じてレベルを返すWeb API
+
+## スペック
+* Elixir 1.4.0
+* Erlang/OTP 19
+* Phoenix Framework 1.2.0
+* Heroku Dynos Free
+* Heroku Postgres Hobby Dev
 
 ## APIの使い方
 ### itemを送信
+#### POST https://desolate-ridge-29818.herokuapp.com/api/items
+
 * status
  * 0: 棚に入れる時
  * 1: ゴミ箱入れる時
 
-POST https://desolate-ridge-29818.herokuapp.com/api/items
 ```
 curl -v -H "Accept: application/json" \
         -H "Content-type: application/json" \
@@ -17,7 +29,7 @@ curl -v -H "Accept: application/json" \
 ```
 
 ### itemの一覧を取得
-GET https://desolate-ridge-29818.herokuapp.com/api/items
+#### GET https://desolate-ridge-29818.herokuapp.com/api/items
 
 ```
 curl -v -H "Accept: application/json" \
@@ -25,22 +37,15 @@ curl -v -H "Accept: application/json" \
         https://desolate-ridge-29818.herokuapp.com/api/items
 ```
 
-## Development
-To start your Phoenix app:
+### Levelを取得
+#### GET https://desolate-ridge-29818.herokuapp.com/api/items/level
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+```
+curl -v -H "Accept: application/json" \
+        -H "Content-type: application/json" \
+        https://desolate-ridge-29818.herokuapp.com/api/items/level
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+## 管理画面
+Webブラウザ上でデータの確認・追加・削除・更新を行なうことができる。
+https://desolate-ridge-29818.herokuapp.com/
